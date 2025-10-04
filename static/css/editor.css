@@ -1,0 +1,208 @@
+/* Стили для модального окна редактора */
+.editor-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 2rem;
+}
+
+.editor-container {
+    background: var(--darker-bg);
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.editor-header {
+    grid-column: 1 / -1;
+    background: rgba(10, 10, 15, 0.9);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(157, 78, 221, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.editor-content {
+    padding: 2rem;
+    border-right: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.editor-preview {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--neon-blue);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 2px rgba(0, 243, 255, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.bullets-editor small {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Предпросмотр */
+.preview-content {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.preview-draft h4 {
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.preview-lead {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.preview-bullets {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.preview-bullets li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.preview-quote {
+    border-left: 3px solid var(--neon-purple);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    z-index: 10001;
+    animation: slideIn 0.3s ease;
+}
+
+.notification-success {
+    background: var(--success);
+}
+
+.notification-info {
+    background: var(--neon-blue);
+}
+
+.notification-error {
+    background: var(--danger);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Анимация загрузки */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.radar-spinner {
+    width: 80px;
+    height: 80px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--neon-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+}
+
+.radar-spinner::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--neon-purple);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,42 @@
+{
+  "РБК Финансы": {
+    "url": "https://www.rbc.ru/finances/",
+    "selectors": {
+      "a.news-feed__item": 16,
+      "div.news-feed__item": 0,
+      "span.news-feed__item__title": 16,
+      "a.main__feed__link": 0
+    }
+  },
+  "Коммерсант Финансы": {
+    "url": "https://www.kommersant.ru/finance",
+    "selectors": {
+      "a.uho__link": 27,
+      "div.uho": 0,
+      "h2.vam__head": 0,
+      "article": 20
+    }
+  },
+  "Интерфакс Финансы": {
+    "url": "https://www.interfax.ru/finance/",
+    "selectors": {},
+    "error": "404 Client Error: Not Found for url: https://www.interfax.ru/finance/"
+  },
+  "Reuters Business": {
+    "url": "https://www.reuters.com/business/",
+    "selectors": {
+      "a[data-testid*='Heading']": 19,
+      "div[data-testid*='story']": 0,
+      "article": 0,
+      "div.story-card": 20
+    }
+  },
+  "Банки.ру Новости": {
+    "url": "https://www.banki.ru/news/",
+    "selectors": {
+      "a.text-color-black": 0,
+      "div.news-item": 0,
+      "article.news-list-item": 0
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка - RADAR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div>
+                <h1 class="nav-logo">📡 RADAR</h1>
+                <span class="nav-subtitle">Financial News Monitoring System</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="error-container">
+                <h2>❌ Ошибка</h2>
+                <p>{{ message }}</p>
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Вернуться на главную</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

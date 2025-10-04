@@ -1,0 +1,27 @@
+requests>=2.32.5
+beautifulsoup4>=4.14.2
+lxml>=6.0.2
+certifi>=2025.8.3
+urllib3>=2.5.0
+feedparser>=6.0.10
+schedule>=1.2.0
+flask>=3.0.0
+
+# Нейросетевые зависимости
+torch>=2.0.0
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+scikit-learn>=1.2.0
+accelerate>=0.20.0
+numpy>=1.24.0
+
+# Легковесные NLP инструменты
+nltk>=3.8.0
+pymorphy3>=2.0.0
+pymorphy3-dicts-ru>=2.4.0
+
+# Оптимизация производительности
+uvloop>=0.19.0
+cchardet>=2.1.7
+aiodns>=3.0.0
+cachetools>=5.3.0

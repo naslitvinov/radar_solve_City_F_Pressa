@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}{{ news.headline }} - RADAR{% endblock %}
+
+{% block content %}
+<div class="background-animation"></div>
+
+<div class="news-detail-container">
+    <nav class="back-nav">
+        <a href="{{ url_for('index') }}" class="back-link">
+            ← Назад к списку событий
+        </a>
+    </nav>
+    
+    <article class="news-article">
+        <header class="detail-header">
+            <div class="source-badge">📰 {{ news.source }}</div>
+            <div class="hotness-badge hotness-{{ 'high' if news.hotness > 0.7 else 'medium' if news.hotness > 0.4 else 'low' }}">
+                Hotness: {{ "%.2f"|format(news.hotness) }}
+            </div>
+            <h1 class="news-headline">{{ news.headline }}</h1>
+            <p class="news-importance">{{ news.why_now }}</p>
+        </header>
+
+        <div class="news-detail-grid">
+            <section class="news-detail-card entities-section">
+                <h3 class="section-title">🏢 Ключевые сущности</h3>
+                <div class="entities-container">
+                    {% for entity in news.entities %}
+                    <span class="entity-tag">{{ entity }}</span>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="news-detail-card timeline-section">
+                <h3 class="section-title">📈 Хронология события</h3>
+                <div class="timeline-container">
+                    {% for event in news.timeline %}
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">{{ event }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="news-detail-card draft-section">
+                <div class="draft-header">
+                    <h3 class="section-title">📝 Черновик публикации</h3>
+                    <button class="btn btn-primary edit-draft-btn" data-news-id="{{ news.id }}">
+                        ✏️ Редактировать черновик
+                    </button>
+                </div>
+                
+                <div class="draft-content">
+                    <h4 class="draft-title">{{ news.draft.title }}</h4>
+                    <p class="draft-lead">{{ news.draft.lead }}</p>
+                    <ul class="draft-bullets">
+                        {% for bullet in news.draft.bullets %}
+                        <li>{{ bullet }}</li>
+                        {% endfor %}
+                    </ul>
+                    <blockquote class="draft-quote">{{ news.draft.quote }}</blockquote>
+                </div>
+            </section>
+
+            <section class="news-detail-card sources-section">
+                <h3 class="section-title">🔗 Источники</h3>
+                <div class="sources-container">
+                    {% for source in news.sources %}
+                    <a href="{{ source }}" target="_blank" class="source-link">
+                        <span class="source-icon">🌐</span>
+                        <span class="source-url">{{ source }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </article>
+</div>
+
+<script>
+    window.currentNewsData = {{ news|tojson }};
+</script>
+{% endblock %}

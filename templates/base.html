@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}RADAR {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" class="nav-logo-link">
+                    <h1 class="nav-logo">📡 RADAR PRO</h1>
+                    <span class="nav-subtitle"></span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                {% if request.endpoint != 'index' %}
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">← На главную</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>RADAR System • Powered by  City_F_Pressa</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/draftEditor.js') }}"></script>
+</body>
+</html>
